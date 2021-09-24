@@ -43,13 +43,25 @@ function App() {
     setSelect(ev.currentTarget.value);
   };
 
-  const htmlClubsList = initialData.map((oneClub, index) => (
-    <li key={index} id={index} className='clubcard'>
-      <p className='name'>{oneClub.name}</p>
-      <p>Abierto entre semana: {oneClub.openOnWeekdays ? 'Si' : 'No'}</p>
-      <p>Abierto el fin de semana: {oneClub.openOnWeekend ? 'Si' : 'No'}</p>
-    </li>
-  ));
+  const htmlClubsList = initialData
+
+    .filter((oneClub) => {
+      if (selectClub === 'week') {
+        return oneClub.openOnWeekdays;
+      } else if (selectClub === 'weekends') {
+        return oneClub.openOnWeekend;
+      } else {
+        return oneClub;
+      }
+    })
+
+    .map((oneClub, index) => (
+      <li key={index} id={index} className='clubcard'>
+        <p className='name'>{oneClub.name}</p>
+        <p>Abierto entre semana: {oneClub.openOnWeekdays ? 'Si' : 'No'}</p>
+        <p>Abierto el fin de semana: {oneClub.openOnWeekend ? 'Si' : 'No'}</p>
+      </li>
+    ));
 
   return (
     <div>
@@ -64,9 +76,9 @@ function App() {
             id='filter'
             onChange={handleFilter}
           >
-            <option>Todos</option>
-            <option>Los que abren entre semana</option>
-            <option>Los que abren el fin de semana</option>
+            <option value='all'>Todos</option>
+            <option value='week'>Los que abren entre semana</option>
+            <option value='weekend'>Los que abren el fin de semana</option>
           </select>
         </div>
       </header>
