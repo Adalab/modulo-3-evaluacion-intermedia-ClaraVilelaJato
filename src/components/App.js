@@ -64,7 +64,7 @@ function App() {
     ));
 
   return (
-    <div>
+    <div className='container'>
       <header className='header'>
         <h1 className='title'>Mis clubs</h1>
 
