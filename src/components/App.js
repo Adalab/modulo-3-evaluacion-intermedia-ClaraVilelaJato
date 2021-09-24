@@ -9,6 +9,7 @@ function App() {
   const [newClubName, setNewClubName] = useState([]);
   const [week, setWeek] = useState(false);
   const [weekEnd, setWeekEnd] = useState(false);
+  const [selectClub, setSelect] = useState('todos');
 
   const handleChangeWeek = (ev) => {
     // En la que guardamos no el valor del input sino su propiedad checked
@@ -38,9 +39,13 @@ function App() {
     setInitialData([...initialData, newClub]);
   };
 
+  const handleFilter = (ev) => {
+    setSelect(ev.currentTarget.value);
+  };
+
   const htmlClubsList = initialData.map((oneClub, index) => (
-    <li key={index} id={index}>
-      <p>{oneClub.name}</p>
+    <li key={index} id={index} className='clubcard'>
+      <p className='name'>{oneClub.name}</p>
       <p>Abierto entre semana: {oneClub.openOnWeekdays ? 'Si' : 'No'}</p>
       <p>Abierto el fin de semana: {oneClub.openOnWeekend ? 'Si' : 'No'}</p>
     </li>
@@ -48,8 +53,22 @@ function App() {
 
   return (
     <div>
-      <header>
+      <header className='header'>
         <h1>Mis clubs</h1>
+
+        <div>
+          <label htmlFor='size'>Mostrar:</label>
+          <select
+            value={selectClub}
+            name='filter'
+            id='filter'
+            onChange={handleFilter}
+          >
+            <option>Todos</option>
+            <option>Los que abren etre semana</option>
+            <option>Los que abren el fin de semana</option>
+          </select>
+        </div>
       </header>
       <main>
         <ul>{htmlClubsList}</ul>
