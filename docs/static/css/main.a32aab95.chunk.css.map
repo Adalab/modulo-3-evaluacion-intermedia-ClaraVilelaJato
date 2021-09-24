@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/styles/App.css"],"names":[],"mappings":"AAAA,MACE,YAAa,CACb,qBACF","file":"main.a32aab95.chunk.css","sourcesContent":[".form {\n  display: flex;\n  flex-direction: column;\n}\n"]}
