@@ -54,7 +54,7 @@ function App() {
   return (
     <div>
       <header className='header'>
-        <h1>Mis clubs</h1>
+        <h1 className='title'>Mis clubs</h1>
 
         <div>
           <label htmlFor='size'>Mostrar:</label>
@@ -65,7 +65,7 @@ function App() {
             onChange={handleFilter}
           >
             <option>Todos</option>
-            <option>Los que abren etre semana</option>
+            <option>Los que abren entre semana</option>
             <option>Los que abren el fin de semana</option>
           </select>
         </div>

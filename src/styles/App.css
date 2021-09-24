@@ -3,6 +3,13 @@
   justify-content: space-between;
 }
 
+.title {
+  font-weight: 900;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-transform: uppercase;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -26,4 +33,13 @@
   font-size: 20px;
   font-weight: 800;
   text-decoration: underline;
+}
+
+.button {
+  background-color: rgb(9, 51, 5);
+  width: 160px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  color: antiquewhite;
 }
