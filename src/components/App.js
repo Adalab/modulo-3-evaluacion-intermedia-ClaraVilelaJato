@@ -7,10 +7,10 @@ function App() {
 
   console.log(initialData);
   const htmlClubsList = initialData.map((oneClub, index) => (
-    <li>
-      Book club
-      <p>Abierto entre semana: Si</p>
-      <p>Abierto el fin de semana:Si</p>
+    <li key={index}>
+      <p>{oneClub.name}</p>
+      <p>Abierto entre semana: {oneClub.openOnWeekdays ? 'Si' : 'No'}</p>
+      <p>Abierto el fin de semana: {oneClub.openOnWeekend ? 'Si' : 'No'}</p>
     </li>
   ));
 
@@ -18,8 +18,10 @@ function App() {
     <div>
       <header>
         <h1>Mis clubs</h1>
-        <ul>{htmlClubsList}</ul>
       </header>
+      <main>
+        <ul>{htmlClubsList}</ul>
+      </main>
     </div>
   );
 }
