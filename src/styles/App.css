@@ -56,3 +56,7 @@
   border: none;
   color: antiquewhite;
 }
+.close {
+  cursor: pointer;
+  padding: 10px;
+}

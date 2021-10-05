@@ -34,13 +34,24 @@ function App() {
       openOnWeekdays: week,
       openOnWeekend: weekEnd,
     };
-    console.log(newClub);
 
     setInitialData([...initialData, newClub]);
+    setNewClubName('');
+    setWeek(false);
+    setWeekEnd(false);
   };
 
   const handleFilter = (ev) => {
     setSelect(ev.currentTarget.value);
+  };
+
+  const handleDelete = (ev) => {
+    const xButton = ev.currentTarget;
+    const parentButton = xButton.parentElement;
+
+    initialData.splice(parentButton.id, 1);
+
+    setInitialData([...initialData]);
   };
 
   const htmlClubsList = initialData
@@ -57,6 +68,9 @@ function App() {
 
     .map((oneClub, index) => (
       <li key={index} id={index} className='clubcard'>
+        <div className='close' onClick={handleDelete}>
+          X
+        </div>
         <p className='name'>{oneClub.name}</p>
         <p>Abierto entre semana: {oneClub.openOnWeekdays ? 'Si' : 'No'}</p>
         <p>Abierto el fin de semana: {oneClub.openOnWeekend ? 'Si' : 'No'}</p>
@@ -97,7 +111,12 @@ function App() {
           </label>
           <label>
             ¿Abre entre semana?{week === true ? 'Sí' : 'No'}
-            <input onChange={handleChangeWeek} type='checkbox' name='week' />
+            <input
+              onChange={handleChangeWeek}
+              type='checkbox'
+              name='week'
+              checked={week}
+            />
           </label>
           <label>
             ¿Abre los fines semana?{weekEnd === true ? 'Sí' : 'No'}
@@ -105,6 +124,7 @@ function App() {
               onChange={handleChangeWeekEnd}
               type='checkbox'
               name='weekend'
+              checked={weekEnd}
             />
           </label>
           <button onClick={handleBtnClick} className='button'>
